@@ -242,6 +242,7 @@ function install_dependencies() {
 	if [ -n "$CHN_NET" ]; then
 		go env -w GOPROXY=https://goproxy.cn,direct
 	fi
+	go version
 
 	apt install gh -y
 
