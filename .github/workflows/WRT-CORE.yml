@@ -73,6 +73,12 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
         run: |
           sudo -E apt -yqq install bc
+          sudo rm -rf /usr/local/go /usr/bin/go /usr/bin/gofmt
+          wget https://go.dev/dl/go1.25.0.linux-amd64.tar.gz
+          sudo tar -C /usr/local -xzf go1.25.0.linux-amd64.tar.gz
+          sudo ln -sf /usr/local/go/bin/go /usr/bin/go
+          sudo ln -sf /usr/local/go/bin/gofmt /usr/bin/gofmt
+          go version
 
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@v2
@@ -267,4 +273,5 @@ jobs:
 
             内核版本：${{env.WRT_KVER}}
             插件列表：${{env.WRT_LIST}}
+
 
